@@ -15,21 +15,20 @@ public class PostController {
 
     // 게시글 작성 페이지
     @GetMapping("/post/write.do")
-    public String openPostWrite(@RequestParam(value = "id", required = false) Model model) {
-        String title = "제목",
-                content = "내용",
-                writer = "홍길동";
-
-        model.addAttribute("t", title);
-        model.addAttribute("c", content);
-        model.addAttribute("w", writer);
-        return "/post/write";
+    public String openPostWrite(@RequestParam(value = "id", required = false) final Long id, Model model) {
+        if (id != null) {
+            PostResponse post = postService.findPostById(id);
+            model.addAttribute("post", post);
+        }
+        return "post/write";
     }
 
-    //신규 게시글 생성
+
+    // 신규 게시글 생성
     @PostMapping("/post/save.do")
     public String savePost(final PostRequest params) {
         postService.savePost(params);
         return "redirect:/post/list.do";
     }
+
 }
