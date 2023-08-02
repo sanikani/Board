@@ -15,7 +15,7 @@ function hasCoda(value) {
  * @param focusTarget - 포커스 대상 Element
  * @returns 필드 입력(선택) 여부
  */
-function isValid(target, fieldName, focusTarget) {
+function isValid(target, fieldName) {
     if (target.value.trim()) {
         return true;
     }

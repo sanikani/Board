@@ -53,12 +53,12 @@
                 <a th:href="@{/post/list.do}" class="btns btn_bdr3 btn_mid">뒤로</a>
             </p>
         </section>
-    </div>
+    </div> <!--/* .content */-->
 </th:block>
 
 <th:block layout:fragment="script">
     <script th:inline="javascript">
-
+        /*<![CDATA[*/
 
         window.onload = () => {
             initCreatedDate();
@@ -74,12 +74,12 @@
         // 게시글 저장(수정)
         function savePost() {
             const form = document.getElementById('saveForm');
-            const fields = [form.title, form.writer, form.content];
-            const fieldNames = ['제목', '이름', '내용'];
+            // const fields = [form.title, form.writer, form.content];
+            // const fieldNames = ['제목', '이름', '내용'];
 
-            for (let i = 0, len = fields.length; i < len; i++) {
-                isValid(fields[i], fieldNames[i]);
-            }
+            // for (let i = 0, len = fields.length; i < len; i++) {
+            //     isValid(fields[i], fieldNames[i]);
+            // }
 
             document.getElementById('saveBtn').disabled = true;
             form.noticeYn.value = form.isNotice.checked;
@@ -87,7 +87,8 @@
             form.submit();
         }
 
-
+        /*]]>*/
     </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/dayjs/1.10.7/dayjs.min.js"></script>
 </th:block>
 </html>
